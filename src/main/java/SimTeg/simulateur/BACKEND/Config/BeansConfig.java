@@ -61,6 +61,18 @@ public class BeansConfig {
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }
+    @Bean
+    public UrlBasedCorsConfigurationSource corsConfigurationSource() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);
+        config.addAllowedOrigin("https://frontend-vc3s.vercel.app");
+        config.addAllowedHeader("*");
+        config.addAllowedMethod("*");
+        source.registerCorsConfiguration("/**", config);
+        return source;
+    }
+
 
 //    @Bean
 //    public WebMvcConfigurer webMvcConfigurer() {
