@@ -13,6 +13,9 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -57,6 +60,28 @@ public class SecurityConfig {
                         jwtAuthFilter, UsernamePasswordAuthenticationFilter.class
                 );
         return  httpSecurity.build();
+    } @Bean
+    public CorsFilter corsFilter() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true); // Allow cookies or authentication headers if needed
+        config.addAllowedOrigin("https://frontend-vc3s.vercel.app"); // Specify your frontend origin
+        config.addAllowedHeader("*"); // Allow all headers or specify needed ones (e.g., "Authorization", "Content-Type")
+        config.addAllowedMethod("*"); // Allow all methods or specify (e.g., "GET", "POST", "OPTIONS")
+        source.registerCorsConfiguration("/**", config); // Apply to all endpoints
+        return new CorsFilter(source);
+    }
+
+    @Bean
+    public UrlBasedCorsConfigurationSource corsConfigurationSource() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);
+        config.addAllowedOrigin("https://frontend-vc3s.vercel.app");
+        config.addAllowedHeader("*");
+        config.addAllowedMethod("*");
+        source.registerCorsConfiguration("/**", config);
+        return source;
     }
 
 
