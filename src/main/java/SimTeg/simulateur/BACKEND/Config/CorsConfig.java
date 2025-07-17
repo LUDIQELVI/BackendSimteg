@@ -1,4 +1,4 @@
-package SimTeg.simulateur.BACKEND;
+package SimTeg.simulateur.BACKEND.Config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,7 +33,7 @@ public class CorsConfig {
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", config); 
+        source.registerCorsConfiguration("/**", config);
 
         return new CorsFilter(source);
     }
