@@ -8,7 +8,7 @@ import SimTeg.simulateur.BACKEND.Entity.SimTegEntity.CategorieCredit;
 import SimTeg.simulateur.BACKEND.Service.SimTegService.CategorieService;
 
 import java.util.List;
-
+@CrossOrigin(origins = "https://frontend-vc3s.vercel.app", allowCredentials = "true")
 @RestController
 @RequestMapping("api/categorieCredit")
 public class CategorieCreditController {

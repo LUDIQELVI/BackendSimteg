@@ -22,6 +22,7 @@ import SimTeg.simulateur.BACKEND.Entity.RoleUpdateRequest;
 import java.util.Map;
 
 @RestController
+@CrossOrigin(origins = "https://frontend-vc3s.vercel.app", allowCredentials = "true")
 @RequestMapping("/auth")
 @Validated
 @RequiredArgsConstructor
