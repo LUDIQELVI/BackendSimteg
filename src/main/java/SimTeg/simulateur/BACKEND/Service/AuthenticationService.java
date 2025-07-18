@@ -66,7 +66,7 @@ public class AuthenticationService {
             }
 
             // Initialisation du rôle USER
-            var userRole = roleRepository.findByName("ADMIN")
+            var userRole = roleRepository.findByName("USER")
                     .orElseThrow(() -> new IllegalStateException("Rôle USER non initialisé"));
 
             // Gestion de la photo
